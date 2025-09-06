@@ -5,9 +5,12 @@
         apt install python3-pip
         
 ## Install instructions
-* Install Flask: pip install flask
-* Run the server: python app.py
-* Visit http://localhost:5000 in your browser to play Pong!
+* Install Flask
+	pip install flask
+* Run the server
+	python app.py
+* Visit the url in your browser to play Pong!
+	http://localhost:5000 
 
 
 ## Todo
