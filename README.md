@@ -13,7 +13,7 @@
 * Run the server
 
 
-        python app.py
+        python3 app.py
 
 * Visit the url in your browser to play Pong!
 
