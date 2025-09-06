@@ -23,5 +23,21 @@ Copilot discussion:
 
         http://localhost:5000 
 
-## Todo
-* Enhancements or a different architecture (e.g., all in-browser with JS).
+
+## Install instructions for Dockerized version
+
+How to run:
+
+* Build the image:
+		
+		docker build -t pong-game .
+
+* Run the container:
+
+		docker run -p 5000:5000 pong-game
+
+* Open in your browser and play!
+
+	http://localhost:5000
+
+
