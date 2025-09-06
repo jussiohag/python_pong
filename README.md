@@ -38,6 +38,6 @@ How to run:
 
 * Open in your browser and play!
 
-	http://localhost:5000
+		http://localhost:5000
 
 
