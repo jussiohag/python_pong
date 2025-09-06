@@ -1,5 +1,9 @@
 # python_pong
 
+Copilot discussion: 
+
+		https://github.com/copilot/share/c04140a2-01a0-8c93-a911-7609a4596978
+
 
 ## Install instructions
 * Install Flask
