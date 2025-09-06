@@ -1,0 +1,23 @@
+body {
+    background: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#game-container {
+    margin: 40px auto;
+    width: 800px;
+    background: #333;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    padding: 16px;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    background: #000;
+    border: 2px solid #fff;
+    border-radius: 8px;
+}

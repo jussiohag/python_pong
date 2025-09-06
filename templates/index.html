@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pong Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="pong-canvas" width="800" height="400"></canvas>
+    </div>
+    <script>
+        const canvas = document.getElementById("pong-canvas");
+        const ctx = canvas.getContext("2d");
+        let mouseY = canvas.height / 2;
+
+        canvas.addEventListener("mousemove", function(e) {
+            const rect = canvas.getBoundingClientRect();
+            mouseY = e.clientY - rect.top;
+        });
+
+        function sendMousePosition() {
+            fetch("/update_player", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ mouse_y: mouseY })
+            });
+        }
+
+        function drawGame(state) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw paddles
+            ctx.fillStyle = "#FFF";
+            ctx.fillRect(state.left_paddle.x, state.left_paddle.y, state.left_paddle.w, state.left_paddle.h);
+            ctx.fillRect(state.right_paddle.x, state.right_paddle.y, state.right_paddle.w, state.right_paddle.h);
+
+            // Draw ball
+            ctx.beginPath();
+            ctx.arc(state.ball.x, state.ball.y, state.ball.r, 0, Math.PI*2);
+            ctx.fill();
+
+            // Draw scores
+            ctx.font = "32px Arial";
+            ctx.fillText(state.scores.left, canvas.width / 4, 40);
+            ctx.fillText(state.scores.right, 3 * canvas.width / 4, 40);
+        }
+
+        function gameLoop() {
+            sendMousePosition();
+            fetch("/game_state")
+                .then(response => response.json())
+                .then(state => {
+                    drawGame(state);
+                });
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+    </script>
+</body>
+</html>
